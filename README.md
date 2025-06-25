@@ -1,11 +1,10 @@
 # 📄 马钊个人简历 - GitHub Pages版
 
 ![简历截图](https://via.placeholder.com/1200x800/4361ee/ffffff?text=响应式简历截图)  
-*现代响应式设计的专业简历模板*
 
 ## 🌐 在线访问
 
-👉 [[[[https://001-alt.github.io/Resume/]](https://001-alt.github.io/Resume/)](https://001-alt.github.io/Resume/)]
+👉 [[[[https://001-alt.github.io/Resume/]](https://001-alt.github.io/Resume/)]]
 
 ## 🚀 项目特点
 
