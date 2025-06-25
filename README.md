@@ -5,7 +5,7 @@
 
 ## 🌐 在线访问
 
-👉 [https://yourusername.github.io/resume/](https://yourusername.github.io/resume/)
+👉 [[https://yourusername.github.io/resume/](https://001-alt.github.io/Resume/)]
 
 ## 🚀 项目特点
 
