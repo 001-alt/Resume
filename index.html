@@ -1,10 +1,1026 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马钊 - 数据分析师 & 全栈开发工程师</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --accent: #06d6a0;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        .resume-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: var(--card-bg);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, rgba(67,97,238,0.1) 0%, rgba(114,9,183,0.1) 100%);
+            border-radius: 0 0 0 100%;
+            z-index: -1;
+        }
+        
+        /* Header & Contact */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.2;
+        }
+        
+        .profile-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-direction: column;
+        }
+        
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3a86ff, #8338ec);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 68px;
+            font-weight: bold;
+            color: white;
+            border: 6px solid rgba(255,255,255,0.8);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+        
+        .info {
+            text-align: center;
+        }
+        
+        .info h1 {
+            font-size: 3.5rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(6,214,160,0.3);
+            transform: translateY(-3px);
+        }
+        
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+        
+        /* Main Content */
+        .content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.7fr;
+            gap: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+        
+        .section-title i {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        /* Skills Section */
+        .skill-category {
+            margin-bottom: 25px;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-category h3 i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .skill {
+            background: rgba(67, 97, 238, 0.08);
+            color: var(--primary-dark);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .skill:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.25);
+        }
+        
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+            margin-left: 15px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -42px;
+            top: 26px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 4px solid white;
+            z-index: 2;
+        }
+        
+        .time-period {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        
+        .organization {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .role {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .details {
+            margin: 12px 0;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        .details ul {
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+        
+        .details ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .details ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: rgba(67,97,238,0.1);
+            padding: 8px 18px;
+            border-radius: 30px;
+        }
+        
+        .project-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67,97,238,0.2);
+        }
+        
+        .github-banner {
+            position: fixed;
+            right: -85px;
+            top: 150px;
+            background: #181717;
+            color: white;
+            padding: 15px 45px;
+            transform: rotate(45deg);
+            z-index: 10;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+        
+        .github-banner:hover {
+            background: #333;
+        }
+        
+        /* Self Assessment */
+        .assessment {
+            background: rgba(6, 214, 160, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 15px;
+            border: 1px solid rgba(6, 214, 160, 0.15);
+        }
+        
+        .assessment-item {
+            margin-bottom: 18px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .assessment-icon {
+            color: var(--accent);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 4px;
+            background: rgba(6, 214, 160, 0.1);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .assessment-content {
+            flex: 1;
+        }
+        
+        /* Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        
+        .award {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(114,9,183,0.1);
+        }
+        
+        .award:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(114,9,183,0.15);
+            border-color: rgba(114,9,183,0.2);
+        }
+        
+        .award-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        .award-org {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        
+        .award-prize {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .technology-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content {
+                grid-template-columns: 1fr;
+                padding: 25px;
+                gap: 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .avatar {
+                width: 140px;
+                height: 140px;
+                font-size: 50px;
+            }
+            
+            .info h1 {
+                font-size: 2.8rem;
+            }
+            
+            .header::before {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .resume-container {
+                margin: 15px auto;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .info h1 {
+                font-size: 2.2rem;
+            }
+            
+            .title {
+                font-size: 1.3rem;
+            }
+            
+            .contact-item {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item::before {
+                left: -52px;
+            }
+            
+            .organization {
+                font-size: 1.2rem;
+            }
+        }
+        
+        .achievement-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 <body>
-
+    <a href="https://github.com/yourusername" class="github-banner" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+    </a>
+    
+    <div class="resume-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-content">
+                <div class="profile">
+                    <div class="avatar">马钊</div>
+                    <div class="info">
+                        <h1>马钊</h1>
+                        <div class="title">数据分析师 & 全栈开发工程师</div>
+                        <p>擅长数据挖掘、后端开发和前端实现，拥有多个全栈项目实战经验</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-user"></i>
+                                <span>22岁 | 兰州文理学院</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>152 9440 5215</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>203415417@qq.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>求职意向：数据分析、Python开发、前端开发</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Education -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        教育背景
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2021 - 2025
+                            </div>
+                            <div class="organization">兰州文理学院</div>
+                            <div class="role">
+                                <i class="fas fa-book-open"></i>
+                                数据科学与大数据技术 | 本科
+                            </div>
+                            <div class="details">
+                                <p><strong>主修课程：</strong>Python、Python网络爬虫、MySQL、Django、HTML、数据可视化、机器学习、Linux</p>
+                                <p><strong>学业表现：</strong>优秀毕业设计，成绩前 20%</p>
+                                <p><strong>学术成就：</strong>参与多个数据分析项目，获得省级奖项</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-laptop-code"></i>
+                        技术能力
+                    </h2>
+                    <div class="skill-category">
+                        <h3><i class="fab fa-python"></i> 编程语言</h3>
+                        <div class="skills">
+                            <span class="skill">Python</span>
+                            <span class="skill">Java</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">HTML5/CSS3</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> 数据库技术</h3>
+                        <div class="skills">
+                            <span class="skill">MySQL</span>
+                            <span class="skill">数据库设计</span>
+                            <span class="skill">SQL优化</span>
+                            <span class="skill">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> 数据分析</h3>
+                        <div class="skills">
+                            <span class="skill">Pandas</span>
+                            <span class="skill">NumPy</span>
+                            <span class="skill">Matplotlib</span>
+                            <span class="skill">Scikit-Learn</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> 前端技术</h3>
+                        <div class="skills">
+                            <span class="skill">Vue.js</span>
+                            <span class="skill">React.js</span>
+                            <span class="skill">Element UI</span>
+                            <span class="skill">Axios</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> 后端框架</h3>
+                        <div class="skills">
+                            <span class="skill">Django</span>
+                            <span class="skill">Flask</span>
+                            <span class="skill">Spring Boot</span>
+                            <span class="skill">Node.js</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> 开发工具</h3>
+                        <div class="skills">
+                            <span class="skill">Git/GitHub</span>
+                            <span class="skill">Docker</span>
+                            <span class="skill">Linux</span>
+                            <span class="skill">Postman</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Awards -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-trophy"></i>
+                        荣誉奖项
+                    </h2>
+                    <div class="awards-grid">
+                        <div class="award">
+                            <div class="award-title">全国三创赛</div>
+                            <div class="award-org">大学生电子商务挑战赛</div>
+                            <div class="award-prize">校特等奖、最佳创新奖</div>
+                        </div>
+                        <div class="award">
+                            <div class="award-title">数媒科技竞赛</div>
+                            <div class="award-org">甘肃赛区</div>
+                            <div class="award-prize">省三等奖</div>
+                        </div>
+                        <div class="award">
+                            <div class="award-title">计算机挑战赛</div>
+                            <div class="award-org">大数据方向</div>
+                            <div class="award-prize">校级二等奖</div>
+                        </div>
+                        <div class="award">
+                            <div class="award-title">全国数学建模竞赛</div>
+                            <div class="award-prize">省级参赛奖</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Self Assessment -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-check"></i>
+                        自我评价
+                    </h2>
+                    <div class="assessment">
+                        <div class="assessment-item">
+                            <div class="assessment-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="assessment-content">
+                                <strong>快速学习与技术整合</strong>
+                                <p>通过系统学习和丰富实践，具备快速掌握新技术的能力，能够在项目中高效整合多种技术栈</p>
+                            </div>
+                        </div>
+                        <div class="assessment-item">
+                            <div class="assessment-icon"><i class="fas fa-arrows-rotate"></i></div>
+                            <div class="assessment-content">
+                                <strong>适应性与问题解决</strong>
+                                <p>面对技术挑战和新环境能保持良好心态，快速适应变化并找到解决方案，具备出色的故障排查能力</p>
+                            </div>
+                        </div>
+                        <div class="assessment-item">
+                            <div class="assessment-icon"><i class="fas fa-users"></i></div>
+                            <div class="assessment-content">
+                                <strong>团队协作与沟通</strong>
+                                <p>善于在跨职能团队中协作完成复杂项目，能够有效沟通并传达技术概念给技术人员和非技术人员</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Project Experience -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-code-branch"></i>
+                        项目经历
+                    </h2>
+                    <div class="timeline">
+                        <!-- Project 1 -->
+                        <div class="timeline-item">
+                            <div class="organization">医疗疾病大数据分析系统</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2023 - 2024
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-user-tie"></i>
+                                全栈开发工程师
+                            </div>
+                            <div class="details">
+                                <p>开发医疗疾病大数据分析系统，使用大数据技术对医疗疾病数据进行收集、分析和可视化，提升疾病预防和治疗决策能力。</p>
+                                <ul>
+                                    <li>使用Selenium实现公共数据库医疗数据的自动化采集</li>
+                                    <li>基于Flask开发RESTful API接口服务</li>
+                                    <li>使用Vue.js构建交互式数据分析仪表盘</li>
+                                    <li>实现疾病趋势分析和预测功能</li>
+                                    <li>设计MySQL数据库模型存储结构化和非结构化医疗数据</li>
+                                </ul>
+                                <p class="technology-tag"><i class="fas fa-tags"></i> Python, Flask, Vue.js, MySQL, Echarts</p>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/001-alt/-Medical-Diseases" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> GitHub仓库
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> 项目演示
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="timeline-item">
+                            <div class="organization">陇上行动 - 电商推荐系统</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2023 - 2024
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-user-tie"></i>
+                                后端与数据分析负责人
+                            </div>
+                            <div class="details">
+                                <p>开发具有个性化推荐功能的微信小程序，根据用户行为和偏好提供精准商品推荐，提升用户购物体验和转化率。</p>
+                                <ul>
+                                    <li>使用Selenium爬取电商平台和市场调研网站的商品数据</li>
+                                    <li>基于Django构建RESTful API提供数据服务</li>
+                                    <li>开发线性回归模型预测商品销售趋势和库存需求</li>
+                                    <li>使用Vue.js实现数据可视化组件展示核心指标</li>
+                                    <li>实现基于用户画像的推荐算法</li>
+                                </ul>
+                                <p class="technology-tag"><i class="fas fa-tags"></i> Django, Vue.js, MySQL, 数据挖掘, 推荐算法</p>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/001-alt/Product-Data-Analysis" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> GitHub仓库
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="timeline-item">
+                            <div class="organization">花仙子B2B电商平台</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2024年
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-user-tie"></i>
+                                Java全栈开发工程师
+                            </div>
+                            <div class="details">
+                                <p>开发面向企业客户的B2B电商平台，支持商品选购、下单支付、商家后台管理等功能，实现厂家直售模式。</p>
+                                <ul>
+                                    <li>使用Spring + Spring MVC + MyBatis构建后端架构</li>
+                                    <li>基于Vue.js + Element UI实现管理后台前端</li>
+                                    <li>通过AJAX实现前后端异步数据交互</li>
+                                    <li>使用Spring AOP实现全局异常处理和日志记录</li>
+                                    <li>使用PDManer设计数据库关系模型</li>
+                                </ul>
+                                <p class="technology-tag"><i class="fas fa-tags"></i> Java, Spring Boot, Vue.js, MySQL, RESTful API</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Work Experience -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i>
+                        实习经历
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="organization">北京熠然网络科技有限公司</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2023 - 2024 | 4个月
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-server"></i>
+                                数据运维工程师
+                            </div>
+                            <div class="details">
+                                <ul>
+                                    <li>负责日常数据监控系统运行状态，确保数据处理流程稳定执行</li>
+                                    <li>开发Python脚本自动化数据清洗和校验流程</li>
+                                    <li>使用SQL进行数据查询和分析，生成业务报告</li>
+                                    <li>参与数据仓库的维护和优化，提升查询性能</li>
+                                    <li>实现关键业务数据的定时备份和恢复方案</li>
+                                </ul>
+                                <p class="achievement-tag">成果：将数据处理自动化率从40%提升至85%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="organization">甘肃鑫伟通通信工程有限公司</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2022 - 2023暑期
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-network-wired"></i>
+                                通信设备维护工程师
+                            </div>
+                            <div class="details">
+                                <ul>
+                                    <li>负责机房设备日常巡检和故障排查</li>
+                                    <li>维护通信设备箱，确保数据传输稳定</li>
+                                    <li>收集和分析设备运行数据，定期生成报告</li>
+                                    <li>参与实施设备固件升级和技术改造</li>
+                                    <li>制定设备维护计划和应急预案</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Campus Experience -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-graduate"></i>
+                        校园经历
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="organization">学校新闻中心</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2021.09 - 2022.06
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-edit"></i>
+                                微信公众号内容负责人
+                            </div>
+                            <div class="details">
+                                <ul>
+                                    <li>负责新闻选题策划与内容采编，每月产出8-10篇高质量推文</li>
+                                    <li>优化微信公众号排版和视觉呈现</li>
+                                    <li>策划校园热点话题，提升用户参与度</li>
+                                    <li>公众号粉丝量3个月内增长120%</li>
+                                    <li>文章平均阅读量提升200%</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="organization">全国数学建模竞赛</div>
+                            <div class="time-period">
+                                <i class="far fa-calendar-alt"></i>
+                                2022年9月
+                            </div>
+                            <div class="role">
+                                <i class="fas fa-calculator"></i>
+                                核心成员
+                            </div>
+                            <div class="details">
+                                <ul>
+                                    <li>与团队成员合作，解决物流优化问题</li>
+                                    <li>使用Python进行数据分析、数学模型构建及求解</li>
+                                    <li>设计并实现问题求解算法</li>
+                                    <li>撰写规范完整的技术报告及解决方案</li>
+                                </ul>
+                                <p class="achievement-tag">成果：获得省级参赛证书</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2024 马钊 - 个人简历 | 基于GitHub Pages部署 | 最后更新: 2024年6月</p>
+            <p style="margin-top: 10px;">
+                <a href="#" style="color: var(--primary); text-decoration: none; margin: 0 10px;"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#" style="color: var(--primary); text-decoration: none; margin: 0 10px;"><i class="fas fa-envelope"></i> 邮箱</a>
+                <a href="#" style="color: var(--primary); text-decoration: none; margin: 0 10px;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动动画效果
+            const animateOnScroll = (element) => {
+                window.addEventListener('scroll', () => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // 应用动画到所有时间线项
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                animateOnScroll(item);
+            });
+            
+            // 应用动画到技能标签
+            const skills = document.querySelectorAll('.skill');
+            skills.forEach((skill, index) => {
+                skill.style.opacity = '0';
+                skill.style.transform = 'scale(0.9)';
+                skill.style.transition = 'all 0.5s ease ' + (index * 0.1) + 's';
+                animateOnScroll(skill);
+            });
+        });
+    </script>
 </body>
 </html>
