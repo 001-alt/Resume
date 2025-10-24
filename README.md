@@ -4,7 +4,7 @@
 
 ## 🌐 在线访问
 
-👉 [[[[https://001-alt.github.io/Resume/]](https://001-alt.github.io/Resume/)]]
+👉 [[[[]](https://001-alt.github.io/Resume/)]]
 
 ## 🚀 项目特点
 
